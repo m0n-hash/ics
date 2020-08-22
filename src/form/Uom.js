@@ -15,7 +15,7 @@ class Uom extends Component{
             rows:[]
         };
     }
-    
+
     componentDidMount(){
         this.generateUom();
     }
@@ -118,7 +118,7 @@ class Uom extends Component{
                                     inputProps={{ 'aria-label': 'primary checkbox' }}
                                 />}
                                 label="isActive?"
-                                labelPlacement="isActive?"
+                                labelPlacement="start"
                                 />
                             <FormControlLabel
                                 value="start"
@@ -129,7 +129,7 @@ class Uom extends Component{
                                     inputProps={{ 'aria-label': 'primary checkbox' }}
                                 />}
                                 label="isDefault?"
-                                labelPlacement="isDefault?"
+                                labelPlacement="start"
                                 />
                         </Grid>
                         <Grid container item xs direction="row" justify="flex-end" alignItems="flex-end">

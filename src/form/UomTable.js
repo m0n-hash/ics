@@ -23,13 +23,13 @@ class UomTable extends Component{
                     <TableBody>
                     {this.props.rows.map((row) => (
                         <TableRow key={row.code}>
-                        <TableCell component="th" scope="row">
-                            {row.code}
-                        </TableCell>
-                        <TableCell align="left">{row.name}</TableCell>
-                        <TableCell align="left">{row.description}</TableCell>
-                        <TableCell align="center"><Icon color={row.checked?'primary':'secondary'}>{row.checked?'done':'close'}</Icon></TableCell>
-                        <TableCell align="center"><Icon color={row.isDefault?'primary':'secondary'}>{row.isDefault?'done':'close'}</Icon></TableCell>
+                            <TableCell component="th" scope="row">
+                                {row.code}
+                            </TableCell>
+                            <TableCell align="left">{row.name}</TableCell>
+                            <TableCell align="left">{row.description}</TableCell>
+                            <TableCell align="center"><Icon color={row.checked?'primary':'secondary'}>{row.checked?'done':'close'}</Icon></TableCell>
+                            <TableCell align="center"><Icon color={row.isDefault?'primary':'secondary'}>{row.isDefault?'done':'close'}</Icon></TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
