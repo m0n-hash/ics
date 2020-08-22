@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Container,TextField,Button,Icon,Checkbox,InputAdornment,Grid,Card,FormControlLabel } from '@material-ui/core';
+import {Container,TextField,Button,Icon,Checkbox,InputAdornment,Grid,Card,FormControlLabel} from '@material-ui/core';
+import faker from 'faker';
+import UomTable from './UomTable';
 
 class Uom extends Component{
     constructor(props){
@@ -9,8 +11,31 @@ class Uom extends Component{
             name:'',
             description:'',
             checked:false,
-            isDefault:false
+            isDefault:false,
+            rows:[]
         };
+    }
+    
+    componentDidMount(){
+        this.generateUom();
+    }
+
+    generateUom=()=>{
+        let num=faker.random.number(10);
+        let item=[];
+        for(let i=0;i<num;i++){
+            item.push({
+                code:faker.commerce.product(),
+                name:faker.commerce.productName(),
+                description:faker.commerce.productMaterial(),
+                checked:faker.random.boolean(),
+                isDefault:false
+            })
+        }
+
+        this.setState({
+            rows:item
+        })
     }
 
     onChange=(key,value)=>{
@@ -22,12 +47,22 @@ class Uom extends Component{
     }
 
     onSave=()=>{
-        console.log(this.state);
+        let {rows,...formValue}=this.state;
+        rows=[formValue,...rows];
+        
+        this.setState({
+            rows:rows,
+            code:'',
+            name:'',
+            description:'',
+            checked:false,
+            isDefault:false,
+        })
     }
 
     render(){
         return(
-            <Container maxWidth="sm">
+            <Container maxWidth="md">
                 <Card style={{padding:20}}>
                     <Grid container spacing="2" direction="column" justify="center" alignItems="stretch">
                         <Grid item xs>
@@ -104,6 +139,7 @@ class Uom extends Component{
                         </Grid>
                     </Grid>
                 </Card>
+                <UomTable rows={this.state.rows}/>
             </Container>
         )
     }
